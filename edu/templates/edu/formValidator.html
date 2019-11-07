@@ -13,7 +13,7 @@
         }
         body{
             background-color: bisque;
-            overflow: hidden;
+/*            overflow: hidden;*/
         }
         #navbar{
             width: 100%;
@@ -47,7 +47,7 @@
         form{
             margin: 100px 35%;
             width: 30%;
-            height: 600px;
+            height: auto;
             border-radius: 15px;
             float: left;
             background-color: #ce4f4f;
@@ -74,13 +74,13 @@
 </head>
 <body>
     <div id="navbar">
-
-        <a href="/login" id="login">Login</a>
-        <a href="/register" id="register">SignUp</a>
+       
+        <a href="/login/" id="login">Login</a>
+        <a href="/register/" id="register">SignUp</a>
         <a href="/" id="homepage">HomePage</a>
     </div>
-    <form method="post" action="{% url 'edu:register' %}" id="register_form">
-        {% csrf_token %}
+    <form action="{% url 'edu:register' %}" id="”register_form" method="post">
+    {% csrf_token %}
        <label for="">First Name : </label>
         <input type="text" name="first_name">
         <br>
@@ -89,6 +89,9 @@
         <br>
         <label for="">Username : </label>
         <input type="text" name="username">
+        {% if mode == 3 or mode == 2 %}
+        <div id="errors">نام کاربری شما در سیستم موجود است</div>
+        {% endif %}
         <br>
         <label for="">Email : </label>
         <input type="email" name="email">
@@ -98,11 +101,14 @@
         <br>
         <label for="">Confirm Password : </label>
         <input type="password" name="password2">
+        {% if mode == 3 or mode == 1 %}
+        <div id="errors">گذرواژه و تکرار گذرواژه یکسان نیستند</div>
+        {% endif %}
         <br>
         <button name="submit">Submit</button>
-
-
-
+        
+        
+        
     </form>
 </body>
 </html>
