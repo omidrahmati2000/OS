@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OS</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: bisque;
+            overflow: hidden;
+        }
+        #navbar{
+            width: 100%;
+            height:50px;
+            position: fixed;
+            background-color: #ce4f4f;
+            padding: 15px;
+            float: left;
+        }
+        #login{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            float: left;
+        }
+        #register{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            float: left;
+        }
+        #homepage{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            float: right;
+        }
+        form{
+            margin: 100px 35%;
+            width: 30%;
+            height: 600px;
+            border-radius: 15px;
+            float: left;
+            background-color: #ce4f4f;
+            padding: 20px;
+        }
+        form>*{
+            margin: 20px 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+        form>label{
+            color: white;
+        }
+        form>button{
+            width: 80px;
+            height: 30px;
+            display: block;
+            margin: 50px auto;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: white;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+        <a href="" id="login">Login</a>
+        <a href="index1.html" id="register">SignUp</a>
+        <a href="index.html" id="homepage">HomePage</a>
+    </div>
+    <form action="" id="”register_form">
+       <label for="">First Name : </label>
+        <input type="text" name="first_name">
+        <br>
+        <label for="">Last Name : </label>
+        <input type="text" name="last_name">
+        <br>
+        <label for="">Username : </label>
+        <input type="text" name="username">
+        <br>
+        <label for="">Email : </label>
+        <input type="email" name="email">
+        <br>
+        <label for="">Password : </label>
+        <input type="password" name="password1">
+        <br>
+        <label for="">Confirm Password : </label>
+        <input type="password" name="password2">
+        <br>
+        <button name="submit">Submit</button>
+
+
+
+    </form>
+</body>
+</html>
