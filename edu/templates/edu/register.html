@@ -79,7 +79,7 @@
         <a href="/register" id="register">SignUp</a>
         <a href="/" id="homepage">HomePage</a>
     </div>
-    <form method="post" action="{% url 'edu:register_request' %}" id="”register_form">
+    <form method="post" action="{% url 'edu:register_request' %}" id="register_form">
         {% csrf_token %}
        <label for="">First Name : </label>
         <input type="text" name="first_name">
