@@ -50,3 +50,10 @@ def login(request):
         else:
             return render(request, 'edu/loggedFailed.html')
     return render(request, 'edu/login.html')
+
+
+def contactUs(request):
+    if request.method == 'POST':
+        return render(request, 'edu/contactSubmitted.html')
+    else:
+        return render(request, 'edu/contactUs.html')

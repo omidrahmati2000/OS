@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>OS</title>
     <style>
         *{
@@ -13,7 +20,6 @@
         }
         body{
             background-color: bisque;
-            overflow: hidden;
         }
         #navbar{
             width: 100%;
@@ -44,50 +50,29 @@
             margin-right: 10px;
             float: right;
         }
-        form{
-            margin: 100px 35%;
-            width: 30%;
-            height: 200px;
-            border-radius: 15px;
-            float: left;
-            background-color: #ce4f4f;
-            padding: 20px;
-        }
-        form>*{
-            margin: 20px 10px;
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-        }
-        form>label{
+        a{
+            text-transform: capitalize;
+            text-decoration: none;
             color: white;
+            margin-right: 10px;
         }
-        form>button{
-            width: 80px;
-            height: 30px;
-            display: block;
-            margin: 0px auto;
+        #done{
+            float: right;
+            margin-top: 60px;
+            margin-right: 10px;
             font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-            background-color: white;
-            outline: none;
-            border: none;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div id="navbar">
+        <a href="" id="logout">LogOut</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
-        <a href="/login/" id="login">Login</a>
-        <a href="/register/" id="register">SignUp</a>
         <a href="/" id="homepage">HomePage</a>
     </div>
-    <form action="{% url 'edu:login' %}" id="login_form" method="post">
-        {% csrf_token %}
-        <label for="">Username : </label>
-        <input type="text" name="username">
-        <br>
-        <label for="">Password : </label>
-        <input type="password" name="password">
-        <button name="login">Login</button>
-
-    </form>
+</body>
+</html>
+    <div id="done">درخواست شما ثبت شد</div>
 </body>
 </html>
