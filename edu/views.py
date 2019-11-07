@@ -21,10 +21,9 @@ def addUser(request):
         last_name = request.POST['last_name']
         email = request.POST['email']
         username = request.POST['username']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        user = models.User.objects.create(first_name=first_name, last_name=last_name, email=email, username=username,
-                                          password1=password1, password2=password2)
+        password = request.POST['password1']
+        user = models.User.objects.create_user(first_name=first_name, last_name=last_name,
+                                               email=email, username=username, password=password)
         user.save()
         return redirect('/')
 
@@ -33,13 +32,9 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        print(username+' '+password)
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print('1')
             return render(request, 'edu/loggedIn.html')
         else:
-            print('2')
             return render(request, 'edu/loggedFailed.html')
-    print('GET')
     return render(request, 'edu/login.html')

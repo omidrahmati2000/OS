@@ -85,9 +85,9 @@
 <body>
     <div id="navbar">
 
-        <a href="index2.html" id="login">Login</a>
-        <a href="index1.html" id="register">SignUp</a>
-        <a href="index.html" id="homepage">HomePage</a>
+        <a href="/login/" id="login">Login</a>
+        <a href="/register/" id="register">SignUp</a>
+        <a href="/" id="homepage">HomePage</a>
     </div>
     <form action="" id="login_form" method="post">
         {% csrf_token %}
@@ -95,7 +95,7 @@
         <input type="text" name="username">
         <br>
         <label for="">Password : </label>
-        <input type="password" name="password1">
+        <input type="password" name="password">
         <div id="error">Error</div>
         <button name="login">Login</button>
 
