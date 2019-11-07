@@ -67,7 +67,12 @@
 </head>
 <body>
     <div id="navbar">
-        <a href="" id="logout">LogOut</a>
+        {% if log == False %}
+        <a href="/login" id="login">Login</a>
+        {% endif %}
+        {% if log == True %}
+        <a href="/logout" id="logout">logout</a>
+        {% endif %}
         <a href="/contactUs/" id="contact_us">ContactUs</a>
         <a href="/" id="homepage">HomePage</a>
     </div>

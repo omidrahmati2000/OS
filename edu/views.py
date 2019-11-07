@@ -1,19 +1,18 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.template import Context
-
 from . import models
-from django.views import generic
+
+log = False
 
 
 def index(request):
-    return render(request, 'edu/index.html')
+    global log
+    return render(request, 'edu/index.html', {'log': log})
 
 
 def register(request):
+    global log
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -21,39 +20,50 @@ def register(request):
         username = request.POST['username']
         password = request.POST['password1']
         password2 = request.POST['password2']
-        context = {"mode": 0}
+        context = {"mode": 0, 'log': log}
         flag = False
         if User.objects.filter(username=username).exists():
             flag = True
         if password2 != password and flag:
-            context = {"mode": 3}
+            context = {"mode": 3, 'log': log}
         if password2 == password and flag:
-            context = {"mode": 2}
+            context = {"mode": 2, 'log': log}
         if password2 != password and not flag:
-            context = {"mode": 1}
+            context = {"mode": 1, 'log': log}
         if password2 == password and not flag:
             user = models.User.objects.create_user(first_name=first_name, last_name=last_name,
                                                    email=email, username=username, password=password)
             user.save()
         return render(request, 'edu/formValidator.html', context)
     else:
-        return render(request, 'edu/register.html')
+        return render(request, 'edu/register.html', {'log': log})
 
 
-def login(request):
+def login_view(request):
+    global log
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            return render(request, 'edu/loggedIn.html')
+            log = True
+            login(request, user)
+            return render(request, 'edu/loggedIn.html', {'log': log})
         else:
-            return render(request, 'edu/loggedFailed.html')
-    return render(request, 'edu/login.html')
+            return render(request, 'edu/loggedFailed.html', {'log': log})
+    return render(request, 'edu/login.html', {'log': log})
 
 
 def contactUs(request):
+    global log
     if request.method == 'POST':
-        return render(request, 'edu/contactSubmitted.html')
+        return render(request, 'edu/contactSubmitted.html', {'log': log})
     else:
-        return render(request, 'edu/contactUs.html')
+        return render(request, 'edu/contactUs.html', {'log': log})
+
+
+def logout_view(request):
+    global log
+    log = False
+    logout(request)
+    return redirect('/')
