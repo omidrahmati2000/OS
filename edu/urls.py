@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^course/$', views.course, name='course'),
     url(r'^courses/$', views.showCourses, name='showCourse'),
     url(r'^setting/$', views.setting, name='setting'),
+    url(r'^panel/$', views.profile, name='panel'),
 ]
 
