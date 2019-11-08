@@ -61,6 +61,8 @@ def contactUs(request):
     if request.method == 'POST':
         subject = request.POST['title']
         message = request.POST['text']
+        e = request.POST['email']
+        message += e
         email(request, subject, message)
         return render(request, 'edu/contactSubmitted.html', {'log': log})
     else:
@@ -78,3 +80,11 @@ def email(request, subject, message):
     email_from = settings.EMAIL_HOST_USER
     recipient_list = ['webe19lopers@gmail.com']
     send_mail(subject, message, email_from, recipient_list)
+
+
+def profile(request):
+    global log
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    username = request.user.username
+    return render(request, 'edu/profile.html', {'log': log, 'first': first_name, 'last': last_name, 'user': username})

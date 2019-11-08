@@ -76,9 +76,11 @@
     <div id="navbar">
         <a href="/contactUs/" id="contact_us">ContactUs</a>
         {% if log == False %}
-        <a href="/login" id="login">Login</a>
+        <a href="" id="setting">Edit</a>
         {% endif %}
         {% if log == True %}
+        <a href="/login" id="login">Login</a>
+        <a href="/profile/" id="profile">Profile</a>
         <a href="/logout" id="logout">logout</a>
         {% endif %}
         <a href="/register" id="register">SignUp</a>

@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from . import views
 
+from . import views
+
 app_name = 'edu'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -9,3 +11,5 @@ urlpatterns = [
     url(r'^contactUs/$', views.contactUs, name='contactUs'),
     url(r'^logout/$', views.logout_view, name='logout'),
 ]
+if views.log:
+    urlpatterns += [url(r'^profile/$', views.profile, name='profile'), ]

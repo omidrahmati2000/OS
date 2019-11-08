@@ -44,6 +44,12 @@
             margin-right: 10px;
             float: right;
         }
+        a{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+        }
         form{
             margin: 100px 35%;
             width: 30%;
@@ -70,42 +76,27 @@
             outline: none;
             border: none;
         }
-        #error{
-            font-size: 30px;
-            color: red;
-            position: absolute;
-            top: 350px;
-            left: 47%;
-/*            float: left*/
-/*            position: relative;*/
-/*            z-index: 10*/
+        span{
+            display: block;
+            float: right;
+            margin-top: 50px;
         }
+       
     </style>
 </head>
 <body>
     <div id="navbar">
+       
+        <a href="" id="logout">LogOut</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
-        {% if log == False %}
-        <a href="/login" id="login">Login</a>
-        {% endif %}
-        {% if log == True %}
+        <a href="/" id="homepage">HomePage</a>
+        {% if log %}
         <a href="/profile/" id="profile">Profile</a>
         <a href="" id="setting">Edit</a>
-        <a href="/logout" id="logout">logout</a>
         {% endif %}
-        <a href="/register/" id="register">SignUp</a>
-        <a href="/" id="homepage">HomePage</a>
     </div>
-    <form action="" id="login_form" method="post">
-        {% csrf_token %}
-        <label for="">Username : </label>
-        <input type="text" name="username">
-        <br>
-        <label for="">Password : </label>
-        <input type="password" name="password">
-        <div id="error">Error</div>
-        <button name="login">Login</button>
-
-    </form>
+    <span id="text_first_name">{{ first }}</span>
+    <span id="text_last_name">{{ last }}</span>
+    <span id="text_user_name">{{ username }}</span>
 </body>
 </html>
