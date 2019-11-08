@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^contactUs/$', views.contactUs, name='contactUs'),
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'^setting/$', views.setting, name='setting'),
     url(r'^course/$', views.course, name='course'),
     url(r'^courses/$', views.showCourses, name='showCourse'),
+    url(r'^setting/$', views.setting, name='setting'),
 ]
 

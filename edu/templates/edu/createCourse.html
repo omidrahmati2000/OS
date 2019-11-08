@@ -120,7 +120,7 @@
 
 
 
-     input[type="text"], input[type="email"], input[type="password"] {
+     input[type="text"], input[type="email"], input[type="password"]  {
           font-size: 0.9em;
           color: #fff;
           font-weight: 100;
@@ -231,13 +231,6 @@
 
 
 
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -270,10 +263,10 @@
              <input class="text" type="text" name='teacher' required placeholder="Teacher">
              <br>
 
-             <input class="text" type="text" name='start_time' required placeholder="Start time">
+             <input class="text" type="time" name='start_time' required placeholder="Start time">
              <br>
 
-             <input class="text" type="text" name='end_time' required placeholder="End time">
+             <input class="text" type="time" name='end_time' required placeholder="End time">
              <br>
              <label for="">First day : </label>
              <div class="custom-select" style="width:200px;">
@@ -288,7 +281,7 @@
              <br>
              <label for="">second day</label>
         <div class="custom-select" style="width:200px;">
-             <select name='second_day' required>
+             <select name='second_day' >
              <option value=”0”>شنبه
              <option value=”1”>یک شنبه
              <option value=”2”>دو شنبه
