@@ -101,7 +101,9 @@
         <a href="/" id="homepage">HomePage</a>
         <a href="/profile/" id="profile">Home</a>
         <a href="/setting/" id="setting">Edit</a>
-        <a href="/course/" id="make_new_course">courses</a>
+                    {% if request.user.is_superuser %}
+                    <a href="/course/" id="make_new_course">Courses</a>
+                {% endif %}
         <a href="/courses/" id="courses">Courses</a>
     </div>
     

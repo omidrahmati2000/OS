@@ -163,7 +163,9 @@
         <a href="/profile/" id="profile">profile</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
         <a href="/" id="homepage">HomePage</a>
+                        {% if request.user.is_superuser %}
                     <a href="/course/" id="make_new_course">Courses</a>
+                {% endif %}
         <a href="/courses/" id='courses'>show courses</a>
     </div>
     <form action="{% url 'edu:setting' %}" id="setting_form" method="post">

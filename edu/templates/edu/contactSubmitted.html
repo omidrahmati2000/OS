@@ -180,7 +180,9 @@
         <a href="/setting/" id="setting">Edit</a>
         <a href="/logout" id="logout">logout</a>
         <a href="/panel/" id="panel">panel</a>
+            {% if request.user.is_superuser %}
                     <a href="/course/" id="make_new_course">Courses</a>
+                {% endif %}
             <a href="/courses/" id='courses'>show courses</a>
         {% endif %}
         <a href="/contactUs/" id="contact_us">ContactUs</a>
