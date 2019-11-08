@@ -80,12 +80,12 @@
 </head>
 <body>
     <div id="navbar">
-       
         <a href="/logout/" id="logout">LogOut</a>
+        <a href="" id="panel">panel</a>
+        <a href="/setting/" id="setting">Edit</a>
+        <a href="/profile/" id="profile">profile</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
         <a href="/" id="homepage">HomePage</a>
-        <a href="/profile/" id="profile">Home</a>
-        <a href="/setting/" id="setting">Edit</a>
     </div>
     <form action="{% url 'edu:setting' %}" id="setting_form" method="post">
         {% csrf_token %}
