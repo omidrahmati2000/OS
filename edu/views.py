@@ -1,8 +1,12 @@
+from django.conf.urls import url
 from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import render, redirect
+
+from edu import urls
 from . import models
 
 log = False
@@ -18,7 +22,7 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        email = request.POST['email']
+        e = request.POST['email']
         username = request.POST['username']
         password = request.POST['password1']
         password2 = request.POST['password2']
@@ -34,7 +38,7 @@ def register(request):
             context = {"mode": 1, 'log': log}
         if password2 == password and not flag:
             user = models.User.objects.create_user(first_name=first_name, last_name=last_name,
-                                                   email=email, username=username, password=password)
+                                                   email=e, username=username, password=password)
             user.save()
         return render(request, 'edu/formValidator.html', context)
     else:
@@ -82,9 +86,11 @@ def email(request, subject, message):
     send_mail(subject, message, email_from, recipient_list)
 
 
+@login_required
 def profile(request):
     global log
     first_name = request.user.first_name
     last_name = request.user.last_name
     username = request.user.username
-    return render(request, 'edu/profile.html', {'log': log, 'first': first_name, 'last': last_name, 'user': username})
+    print(username)
+    return render(request, 'edu/profile.html', {'log': log, 'first': first_name, 'last': last_name, 'username': username})

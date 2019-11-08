@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from . import views
 
 from . import views
 
@@ -10,6 +9,6 @@ urlpatterns = [
     url(r'^login/$', views.login_view, name='login'),
     url(r'^contactUs/$', views.contactUs, name='contactUs'),
     url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^profile/$', views.profile, name='profile'),
 ]
-if views.log:
-    urlpatterns += [url(r'^profile/$', views.profile, name='profile'), ]
+
