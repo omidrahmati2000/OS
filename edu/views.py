@@ -1,5 +1,7 @@
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
 from django.shortcuts import render, redirect
 from . import models
 
@@ -57,6 +59,9 @@ def login_view(request):
 def contactUs(request):
     global log
     if request.method == 'POST':
+        subject = request.POST['title']
+        message = request.POST['text']
+        email(request, subject, message)
         return render(request, 'edu/contactSubmitted.html', {'log': log})
     else:
         return render(request, 'edu/contactUs.html', {'log': log})
@@ -67,3 +72,9 @@ def logout_view(request):
     log = False
     logout(request)
     return redirect('/')
+
+
+def email(request, subject, message):
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['webe19lopers@gmail.com']
+    send_mail(subject, message, email_from, recipient_list)
