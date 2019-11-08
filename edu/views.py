@@ -1,4 +1,3 @@
-from django.conf.urls import url
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -6,7 +5,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import render, redirect
 
-from edu import urls
 from . import models
 
 log = False
@@ -111,3 +109,33 @@ def setting(request):
     else:
         return render(request, 'edu/setting.html', {'log': log})
 
+
+@login_required
+def course(request):
+    if request.method == 'POST':
+        department = request.POST['department']
+        name = request.POST['name']
+        course_number = request.POST['course_number']
+        group_number = request.POST['group_number']
+        teacher = request.POST['teacher']
+        start_time = request.POST['start_time']
+        end_time = request.POST['end_time']
+        first_day = request.POST['first_day']
+        second_day = request.POST['second_day']
+        new_course = models.Course(department=department,name=name,course_number=course_number
+                                                  ,group_number=group_number,teacher=teacher,start_time=start_time
+                                                  ,end_time=end_time,first_day=first_day,second_day=second_day)
+        new_course.save()
+        return render(request, 'edu/createCourse.html', {'log': log})
+    else:
+        return render(request, 'edu/createCourse.html', {'log': log})
+
+
+@login_required
+def showCourses(request):
+    data = models.Course.objects.all()
+    stu = {
+        'log': log,
+        "courses": data
+    }
+    return render(request, 'edu/showCourses.html', stu)

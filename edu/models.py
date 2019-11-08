@@ -10,7 +10,7 @@ class Course(models.Model):
     teacher = models.CharField(max_length=200)
     start_time = models.CharField(max_length=200)
     end_time = models.CharField(max_length=200)
-    day= (('1','1'), ('2','2'), ('3','3'), ('4','4'))
-    first_day = models.CharField(max_length=200,choices=day)
+    day = (('1','1'), ('2','2'), ('3','3'), ('4','4'))
+    first_day = models.CharField(max_length=200, choices=day)
     second_day = models.CharField(max_length=200, choices=day)
 

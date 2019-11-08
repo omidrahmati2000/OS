@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OS</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: bisque;
+            overflow: hidden;
+        }
+        #navbar{
+            width: 100%;
+            height:50px;
+            position: fixed;
+            background-color: #ce4f4f;
+            padding: 15px;
+            float: left;
+        }
+        #login{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            float: left;
+        }
+        #register{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            float: left;
+        }
+        #homepage{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            float: right;
+        }
+        a{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+        }
+        form{
+            margin: 100px 35%;
+            width: 30%;
+            height: 200px;
+            border-radius: 15px;
+            float: left;
+            background-color: #ce4f4f;
+            padding: 20px;
+        }
+        form>*{
+            margin: 20px 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+        form>label{
+            color: white;
+        }
+        form>button{
+            width: 80px;
+            height: 30px;
+            display: block;
+            margin: 0px auto;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: white;
+            outline: none;
+            border: none;
+        }
+        span{
+            display: block;
+            float: right;
+            margin-top: 50px;
+        }
+        #all_courses{
+            
+            margin: 100px 10%;
+            width: 80%;
+            height: 500px;
+            border-radius: 15px;
+            float: left;
+            background-color: #ce4f4f;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        
+        <a href="/logout/" id="logout">LogOut</a>
+        <a href="/contactUs/" id="contact_us">ContactUs</a>
+        <a href="/" id="homepage">HomePage</a>
+        <a href="/profile/" id="profile">Home</a>
+        <a href="/setting/" id="setting">Edit</a>
+        <a href="/course/" id="make_new_course">Entekhab Vahed</a>
+        <a href="/courses/" id="courses">Courses</a>
+    </div>
+    
+    <div id="all_courses">
+        {% for course in courses %}
+            <div class=[{{ course.course_number }}]_[{{  course.group_number  }}]>
+            <h4>{{ course.name }}</h4>
+            <div>{{ course.department }}</div>
+            <div>{{ course.first_day }} {{ course.second_day }}</div>
+            <div>{{ course.start_time }}   {{ course.end_time }}</div>
+            <div>{{ course.teacher }}</div>
+        {% endfor %}
+    </div>
+    </div>
+</body>
+</html>
