@@ -22,7 +22,7 @@
         body{
             font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
             background-color: #212121;
-            overflow: hidden;
+            {#overflow: hidden;#}
         }
         a{
             text-transform: capitalize;
@@ -60,7 +60,7 @@
             float: right;
         }
         form{
-            margin: 100px 40%;
+            margin: 100px 35%;
             width: auto;
             height: auto;
             border-radius: 15px;
@@ -153,6 +153,91 @@
   transform: translateY(-30px);
   visibility: visible !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -163,16 +248,51 @@
         <a href="/profile/" id="profile">profile</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
         <a href="/" id="homepage">HomePage</a>
+        <a href="/course/" id="courses">Courses</a>
     </div>
-    <form action="{% url 'edu:setting' %}" id="setting_form" method="post">
+    <form id=”make_course” action="{% url 'edu:course' %}" method="post" >
         {% csrf_token %}
-      <h1>Edit:</h1>
-        <input class="text" type="text" name="first_name" placeholder="First Name" required="">
-        <input class="text" type="text" name="last_name" placeholder="Last Name" required="">
-        <button name="submit">Submit</button>
-        
-        
-        
+        <h1>Entekhabe e Vahed</h1>
+
+             <input class="text" type="text" name='department' required placeholder="Daneshkade">
+             <br>
+
+             <input class="text" type="text" name='name' required placeholder="Name">
+             <br>
+
+             <input class="text" type="text" name='course_number' required placeholder="Course number">
+             <br>
+
+             <input class="text" type="text" name='group_number' required placeholder="Group number">
+             <br>
+
+             <input class="text" type="text" name='teacher' required placeholder="Teacher">
+             <br>
+
+             <input class="text" type="text" name='start_time' required placeholder="Start time">
+             <br>
+
+             <input class="text" type="text" name='end_time' required placeholder="End time">
+             <br>
+             <label for="">First day : </label>
+             <select type="text" name='first_day' required>
+             <option value=”0”>شنبه
+             <option value=”1”>یک شنبه
+             <option value=”2”>دو شنبه
+             <option value=”3”>سه شنبه
+             <option value=”4”>چهار شنبه
+             </select>
+             <br>
+             <label for="">second day</label>
+             <select name='second_day' required>
+             <option value=”0”>شنبه
+             <option value=”1”>یک شنبه
+             <option value=”2”>دو شنبه
+             <option value=”3”>سه شنبه
+             <option value=”4”>چهار شنبه
+             </select>
+             <button id="sabt">Sabt</button>
     </form>
+    <div id="all_courses"></div>
 </body>
 </html>

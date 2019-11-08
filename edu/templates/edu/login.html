@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>OS</title>
     <style>
+/*
+        :root {
+           body #212121
+          nav & form  #323232
+            text color #0d7377
+          box shadow   #14ffec
+        }
+*/
         *{
             padding: 0;
             margin: 0;
@@ -12,45 +20,52 @@
             box-sizing: border-box;
         }
         body{
-            background-color: bisque;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: #212121;
             overflow: hidden;
+        }
+        a{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: #0d7377;
+            margin-right: 10px;
         }
         #navbar{
             width: 100%;
             height:50px;
             position: fixed;
-            background-color: #ce4f4f;
+            background-color: #323232;
             padding: 15px;
             float: left;
         }
         #login{
             text-transform: capitalize;
             text-decoration: none;
-            color: white;
+            color: #0d7377;
             margin-right: 20px;
             float: left;
         }
         #register{
             text-transform: capitalize;
             text-decoration: none;
-            color: white;
+            color: #0d7377;
             margin-right: 10px;
             float: left;
         }
         #homepage{
             text-transform: capitalize;
             text-decoration: none;
-            color: white;
+            color: #0d7377;
             margin-right: 10px;
             float: right;
         }
         form{
-            margin: 100px 35%;
-            width: 30%;
-            height: 200px;
+            margin: 100px 40%;
+            width: auto;
+            height: auto;
             border-radius: 15px;
             float: left;
-            background-color: #ce4f4f;
+            background-color: #323232;
             padding: 20px;
         }
         form>*{
@@ -58,18 +73,86 @@
             font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         }
         form>label{
-            color: white;
+            color: #0d7377;
         }
-        form>button{
-            width: 80px;
-            height: 30px;
+
+        button{
+            padding: 10px 30px;
             display: block;
-            margin: 0px auto;
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-            background-color: white;
-            outline: none;
-            border: none;
+            margin: 40px auto;
+            border: 2px solid #0d7377;
+            background-color: transparent;
+            color: #0d7377;
+            transition: .4s;
+            cursor: pointer;
         }
+        button:nth-of-type(1):hover{
+            box-shadow: inset 0 0 0 50px #14ffec;
+            color: #0d7377;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       h1 {
+          font-size: 1.5em;
+          text-align: center;
+          color: #0d7377;
+          font-weight: 100;
+          text-transform: capitalize;
+          letter-spacing: 4px;
+        }
+
+
+
+
+
+
+     input[type="text"], input[type="email"], input[type="password"] {
+          font-size: 0.9em;
+          color: #fff;
+          font-weight: 100;
+          width: 94.5%;
+          display: block;
+          border: none;
+          padding: 0.8em;
+          border: solid 1px rgba(255, 255, 255, 0.37);
+          -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+          transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+          background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #fff 4%);
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #fff 4%);
+          background-position: -800px 0;
+          background-size: 100%;
+          background-repeat: no-repeat;
+}
+
+    .text:focus, .text:valid {
+          box-shadow: none;
+          outline: none;
+          background-position: 0 0;
+}
+        .text:focus::-webkit-input-placeholder, .text:valid::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: .9em;
+  -webkit-transform: translateY(-30px);
+  -moz-transform: translateY(-30px);
+  -o-transform: translateY(-30px);
+  -ms-transform: translateY(-30px);
+  transform: translateY(-30px);
+  visibility: visible !important;
+}
     </style>
 </head>
 <body>
@@ -89,11 +172,10 @@
     </div>
     <form action="{% url 'edu:login' %}" id="login_form" method="post">
         {% csrf_token %}
-        <label for="">Username : </label>
-        <input type="text" name="username">
+        <h1>LogIn</h1>
+        <input class="text" type="text" name="username" placeholder="Username" required="">
         <br>
-        <label for="">Password : </label>
-        <input type="password" name="password">
+        <input class="text" type="password" name="password" placeholder="Password" required="">
         <button name="login">Login</button>
 
     </form>
