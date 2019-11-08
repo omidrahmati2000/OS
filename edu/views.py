@@ -94,3 +94,20 @@ def profile(request):
     username = request.user.username
     print(username)
     return render(request, 'edu/profile.html', {'log': log, 'first': first_name, 'last': last_name, 'username': username})
+
+
+@login_required
+def setting(request):
+    if request.method == 'POST':
+        first = request.POST['first_name']
+        last = request.POST['last_name']
+        if first:
+            request.user.first_name = first
+            request.user.save()
+        if first:
+            request.user.last_name = last
+            request.user.save()
+        return render(request, 'edu/setting.html', {'log': log})
+    else:
+        return render(request, 'edu/setting.html', {'log': log})
+

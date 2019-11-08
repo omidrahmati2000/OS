@@ -47,7 +47,7 @@
         form{
             margin: 100px 35%;
             width: 30%;
-            height: 600px;
+            height: auto;
             border-radius: 15px;
             float: left;
             background-color: #ce4f4f;
@@ -70,46 +70,36 @@
             outline: none;
             border: none;
         }
+        a{
+            text-transform: capitalize;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="navbar">
+       
+        <a href="/logout/" id="logout">LogOut</a>
         <a href="/contactUs/" id="contact_us">ContactUs</a>
-        {% if log == False %}
-         <a href="/login" id="login">Login</a>
-        {% endif %}
-        {% if log == True %}
-        <a href="/setting/" id="setting">Edit</a>
-        <a href="/profile/" id="profile">Profile</a>
-        <a href="/logout" id="logout">logout</a>
-        {% endif %}
-        <a href="/register" id="register">SignUp</a>
         <a href="/" id="homepage">HomePage</a>
+        <a href="/profile/" id="profile">Home</a>
+        <a href="/setting/" id="setting">Edit</a>
     </div>
-    <form method="post" action="{% url 'edu:register' %}" id="register_form">
+    <form action="{% url 'edu:setting' %}" id="setting_form" method="post">
         {% csrf_token %}
+      <span>Edit:</span>
        <label for="">First Name : </label>
         <input type="text" name="first_name">
         <br>
         <label for="">Last Name : </label>
         <input type="text" name="last_name">
         <br>
-        <label for="">Username : </label>
-        <input type="text" name="username">
-        <br>
-        <label for="">Email : </label>
-        <input type="email" name="email">
-        <br>
-        <label for="">Password : </label>
-        <input type="password" name="password1">
-        <br>
-        <label for="">Confirm Password : </label>
-        <input type="password" name="password2">
-        <br>
         <button name="submit">Submit</button>
-
-
-
+        
+        
+        
     </form>
 </body>
 </html>
